@@ -5,7 +5,7 @@ const TaskSchema = new mongoose.Schema({
   name: String,
   completed: Boolean,
   description: String,
-  priority: [{ type: String }],
+  priority: String,
 });
 
 module.exports = mongoose.model("Tasks", TaskSchema);
