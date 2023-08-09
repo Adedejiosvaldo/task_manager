@@ -1,7 +1,12 @@
 const Tasks = require("../models/Tasks");
 
-const getAllTasks = (req, res) => {
-  res.json("All Tasks from Controller");
+const getAllTasks = async (req, res) => {
+  try {
+    const task = await Tasks.find({});
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 const getTask = (req, res) => {
@@ -9,8 +14,12 @@ const getTask = (req, res) => {
 };
 
 const createTask = async (req, res) => {
-  const task = await Tasks.create(req.body);
-  res.status(201).json({ task });
+  try {
+    const task = await Tasks.create(req.body);
+    res.status(201).json({ task });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 const updateTask = (req, res) => {
