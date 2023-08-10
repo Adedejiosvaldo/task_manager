@@ -4,14 +4,9 @@ const tasks = require("./routes/Tasks");
 const app = express();
 const PORT = 3000;
 require("dotenv").config();
-//middleware
 
 app.use(express.json());
-
-//Routes
-app.get("/hello", (req, res) => {
-  res.send("Task Manager App");
-});
+app.use(express.static("./public"));
 
 app.use("/api/v1/tasks", tasks);
 

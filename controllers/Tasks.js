@@ -2,12 +2,12 @@ const Tasks = require("../models/Tasks");
 
 const getAllTasks = async (req, res) => {
   try {
-    const task = await Tasks.find({});
+    const tasks = await Tasks.find({});
 
-    if (task.length === 0) {
+    if (tasks.length === 0) {
       return res.status(404).json({ message: `No Tasks At the Moment` });
     }
-    res.status(200).json({ task });
+    res.status(200).json({ tasks });
   } catch (error) {
     res.status(500).json({ message: error });
   }
