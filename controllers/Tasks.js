@@ -4,9 +4,9 @@ const Tasks = require("../models/Tasks");
 const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Tasks.find({});
 
-  //   if (tasks.length === 0) {
-  //     return res.status(404).json({ message: `No Tasks At the Moment` });
-  //   }
+  if (tasks.length === 0) {
+    return res.status(404).json({ message: `No Tasks At the Moment` });
+  }
 
   res.status(200).json({ tasks });
 });
