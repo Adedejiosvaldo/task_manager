@@ -9,7 +9,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static("./public"));
+// app.use(express.static("./public"));
+
+app.get("/", (req, res) => {
+  res.send('<h1>ToDo Api</h1> <a href="/api/v1/tasks">Tasks API Route</a>');
+});
 
 app.use("/api/v1/tasks", tasks);
 
